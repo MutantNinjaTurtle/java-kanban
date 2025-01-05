@@ -9,8 +9,8 @@ import java.util.HashMap;
 
 public class TaskManager {
     int idCounter = 1;
-    HashMap<Integer,Task> tasks = new HashMap<>();;
-    HashMap<Integer, Epic> epics = new HashMap<>();;
+    HashMap<Integer,Task> tasks = new HashMap<>();
+    HashMap<Integer, Epic> epics = new HashMap<>();
     HashMap<Integer, Subtask> subtasks = new HashMap<>();
 
     public void addTask(Task task){     // добавление задачи в хеш-мап, увеличение id
