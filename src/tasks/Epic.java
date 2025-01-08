@@ -1,4 +1,4 @@
-package Tasks;
+package tasks;
 
 import java.util.ArrayList;
 
@@ -16,43 +16,37 @@ public class Epic extends Task {
 
     public void removeById(Subtask subtask) {
         subtasks.remove(subtask);
-
     }
 
     public ArrayList<Subtask> getSubtasks() {
         return subtasks;
     }
 
-    public void updateStatus() {  // Управление изменением статуса
+    public void updateStatus() {  // Управление изменением статуса эпика
         if (subtasks.isEmpty()) {
             setStatus(Status.NEW);
             return;
         }
-        boolean AllDone = false;
-        boolean Progress = false;
-
+        int countDone = 0;
+        int countNew = 0;
         for (Subtask subtask : subtasks) {
             if (subtask.getStatus() == Status.DONE) {
-                AllDone = true;
-            } else if (subtask.getStatus() == Status.IN_PROGRESS) {
-                Progress = true;
-                AllDone = false;
+                countDone++;
+            } else if (subtask.getStatus() == Status.NEW) {
+                countNew++;
             }
         }
-
-        if (AllDone) {
+        if (countDone == subtasks.size()) {
             setStatus(Status.DONE);
-        } else if (Progress) {
-            setStatus(Status.IN_PROGRESS);
-        } else {
+        } else if (countNew == subtasks.size()) {
             setStatus(Status.NEW);
+        } else {
+            setStatus(Status.IN_PROGRESS);
         }
-
     }
 
-    public void addSubtask (Subtask subtask) { // обновление под задачи
+    public void addSubtask(Subtask subtask) { // обновление подзадачи
         subtasks.add(subtask);
         updateStatus();
     }
-
 }

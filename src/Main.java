@@ -1,8 +1,8 @@
-import TaskManager.TaskManager;
-import Tasks.Epic;
-import Tasks.Status;
-import Tasks.Subtask;
-import Tasks.Task;
+import manager.TaskManager;
+import tasks.Epic;
+import tasks.Status;
+import tasks.Subtask;
+import tasks.Task;
 
 public class Main {
 
@@ -26,23 +26,22 @@ public class Main {
         taskManager.addSubtask(subtask3);
 
 
-        taskManager.getAllTasks(); // печать всех задач
-
-        Task task3 = new Task("task1", "Погладить кота", Status.DONE);
-        Subtask subtask4 = new Subtask("Ремонт комнаты 1", "Покраска  потолка", Status.DONE, epic1.getId());
+        Task task3 = new Task("task1", "Погладить кота", Status.DONE, 1);
+        //System.out.println(taskManager.getSubtaskByEpic(epic1));
+        Subtask subtask4 = new Subtask("Ремонт комнаты 1", "Покраска  потолка", Status.DONE, epic1.getId(), 5);
         Subtask subtask5 = new Subtask("Ремонт комнаты 2", "Покраска стен", Status.IN_PROGRESS, epic1.getId());
+        Subtask subtask6 = new Subtask("погладить кота ", "Покраска  потолка", Status.DONE, epic1.getId());
+        taskManager.updateTask(task3);             // обновление задач
+//        taskManager.updateSubTask(subtask1,subtask4);    // обновление подзадач
+        taskManager.updateSubTask(subtask4);
+       // System.out.println(taskManager.getSubtaskByEpic(epic1));
 
-        taskManager.updateTask(task1,task3);             // обновление задач
-        taskManager.updateSubTask(subtask1,subtask4);    // обновление подзадач
-        taskManager.updateSubTask(subtask2,subtask5);
-        taskManager.getAllTasks();
-
-        taskManager.deleteById(1);   // удаление задачи по Id
-        taskManager.deleteById(5);   // удаление под задачи по Id
-        taskManager.getAllTasks();
-
-        taskManager.deleteById(3);  // удаление эпика по id
-        taskManager.getAllTasks();
+//        taskManager.deleteById(1);   // удаление задачи по Id
+//        taskManager.deleteById(5);   // удаление под задачи по Id
+//        taskManager.getAllTasks1();
+//
+//        taskManager.deleteById(3);  // удаление эпика по id
+//        taskManager.getAllTasks1();
 
     }
 }

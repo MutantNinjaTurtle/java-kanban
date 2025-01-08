@@ -1,13 +1,12 @@
-package Tasks;
+package tasks;
 
 import java.util.Objects;
 
 public class Task {
-    private final String name;
-    private final String description;
+    private String name;
+    private String description;
     private Status status;
-    public int id;
-
+    private int id;
 
     public Task(String name, String description, Status status) {
         this.name = name;
@@ -19,6 +18,7 @@ public class Task {
         this.name = name;
         this.description = description;
     }
+
     public int getId() {
         return id;
     }
@@ -49,11 +49,29 @@ public class Task {
 
     @Override
     public String toString() {
-        return "ID " + this.getClass().getName() +
-                "{name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", progress=" + status +
-                '}'  ;
+        return "ID " + this.getClass().getName() + "{name='" + name + '\'' + ", description='" + description + '\'' + ", progress=" + status + '}';
     }
 
+    public Task(String name, String description, Status status, int id) {
+        this.name = name;
+        this.description = description;
+        this.status = status;
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
 }
