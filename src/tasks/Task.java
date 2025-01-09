@@ -9,14 +9,11 @@ public class Task {
     private int id;
 
     public Task(String name, String description, Status status) {
-        this.name = name;
-        this.description = description;
-        this.status = status;
+        this(name, description, status, 0);
     }
 
     public Task(String name, String description) {
-        this.name = name;
-        this.description = description;
+        this(name, description, Status.NEW);
     }
 
     public int getId() {

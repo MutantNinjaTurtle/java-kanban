@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class TaskManager {
-    private static int idCounter = 1;
+    private int idCounter = 1;
     private HashMap<Integer, Task> tasks = new HashMap<>();
     private HashMap<Integer, Epic> epics = new HashMap<>();
     private HashMap<Integer, Subtask> subtasks = new HashMap<>();
@@ -26,7 +26,6 @@ public class TaskManager {
         Epic epic = epics.get(subtask.getEpicId());
         epic.addSubtask(subtask);
         epic.updateStatus();
-        epics.put(subtask.getEpicId(), epic);
     }
 
     public void addEpic(Epic epic) {   // добавление задачи в хеш-мап, увеличение id
@@ -34,6 +33,12 @@ public class TaskManager {
         epic.updateStatus();
         epics.put(idCounter, epic);
         idCounter++;
+    }
+
+    public void getAllTasks1(){              //  Получение списка всех задач.
+        System.out.println(tasks);
+        System.out.println(epics);
+        System.out.println(subtasks);
     }
 
     public ArrayList<Task> getAllTasks() {   //  Возращение всех задач
@@ -54,9 +59,14 @@ public class TaskManager {
 
     public void deleteAllEpics() {           //Удаление всех эпиков
         epics.clear();
+        subtasks.clear();
     }
 
     public void deleteAllSubTasks() {       //Удаление всех подзадач
+        for (Epic epic : epics.values()) {
+            epic.deleteAllSubtasks(); //   удаление из эпиков
+            epic.updateStatus(); // обновление статуса эпика
+        }
         subtasks.clear();
     }
 
@@ -80,18 +90,17 @@ public class TaskManager {
         subtasks.put(subtask.getId(), subtask);
         Epic epic = epics.get(subtask.getEpicId());
         epic.addSubtask(subtask);
-        epics.put(epic.getId(), epic);
+        epic.updateStatus();
     }
 
     public void updateEpic(Epic epic) {
-        Epic epic_update = epics.get(epic.getId());
-        if (!epic_update.getName().equals(epic.getName())) {
-            epic_update.setName(epic.getName());
+        Epic epicUpdate = epics.get(epic.getId());
+        if (!epicUpdate.getName().equals(epic.getName())) {
+            epicUpdate.setName(epic.getName());
         }
-        if (!epic_update.getDescription().equals(epic.getDescription())) {
-            epic_update.setDescription(epic.getDescription());
+        if (!epicUpdate.getDescription().equals(epic.getDescription())) {
+            epicUpdate.setDescription(epic.getDescription());
         }
-        epics.put(epic.getId(), epic_update);
     }
 
     public void deleteByIdTasks(int id) {   // Удаление таска по идентификатору (Id)
@@ -112,8 +121,13 @@ public class TaskManager {
         epics.remove(id);
     }
 
-    public ArrayList<Subtask> getSubtaskByEpic(Epic epic) {  //Получение списка всех подзадач определённого эпика
+    public ArrayList<Subtask> getSubtaskByEpic(int id) {  //Получение списка всех подзадач определённого эпика
+        Epic epic = epics.get(id);
         return epic.getSubtasks();
     }
 }
 
+// Сергей, добрый день. Не понял вашего замечания по методу public void deleteByIdEpic(int id)
+// Удаление эпика по идентификатору (Id)
+//Нужно пересмотреть статус эпика. Пустой эпик должен быть в статусе NEW
+// для чего пересматривать статус удаляемого эпика?

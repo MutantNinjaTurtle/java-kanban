@@ -25,7 +25,6 @@ public class Main {
         taskManager.addSubtask(subtask2);
         taskManager.addSubtask(subtask3);
 
-
         Task task3 = new Task("task1", "Погладить кота", Status.DONE, 1);
         //System.out.println(taskManager.getSubtaskByEpic(epic1));
         Subtask subtask4 = new Subtask("Ремонт комнаты 1", "Покраска  потолка", Status.DONE, epic1.getId(), 5);
@@ -34,7 +33,9 @@ public class Main {
         taskManager.updateTask(task3);             // обновление задач
 //        taskManager.updateSubTask(subtask1,subtask4);    // обновление подзадач
         taskManager.updateSubTask(subtask4);
-       // System.out.println(taskManager.getSubtaskByEpic(epic1));
+  //      System.out.println(taskManager.getAllSubTask());
+  //      taskManager.getAllTasks1();
+  //    System.out.println(taskManager.getSubtaskByEpic(3));
 
 //        taskManager.deleteById(1);   // удаление задачи по Id
 //        taskManager.deleteById(5);   // удаление под задачи по Id
