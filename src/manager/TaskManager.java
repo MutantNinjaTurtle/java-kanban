@@ -35,12 +35,6 @@ public class TaskManager {
         idCounter++;
     }
 
-    public void getAllTasks1(){              //  Получение списка всех задач.
-        System.out.println(tasks);
-        System.out.println(epics);
-        System.out.println(subtasks);
-    }
-
     public ArrayList<Task> getAllTasks() {   //  Возращение всех задач
         return new ArrayList<>(tasks.values());
     }
