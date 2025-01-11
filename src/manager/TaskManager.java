@@ -110,18 +110,20 @@ public class TaskManager {
     }
 
     public void deleteByIdEpic(int id) {    // Удаление эпика по идентификатору (Id)
-        Epic epic = epics.get(id);
+        Epic epic = epics.remove(id);
+        if (epic == null) {
+            return;
+        }
         epic.deleteAllSubtasks();
-        epics.remove(id);
     }
 
     public ArrayList<Subtask> getSubtaskByEpic(int id) {  //Получение списка всех подзадач определённого эпика
         Epic epic = epics.get(id);
+        if (epic == null) {
+            return new ArrayList<>();         // если эпик = null, возвращаем пустой список
+        }
         return epic.getSubtasks();
     }
 }
 
-// Сергей, добрый день. Не понял вашего замечания по методу public void deleteByIdEpic(int id)
-// Удаление эпика по идентификатору (Id)
-//Нужно пересмотреть статус эпика. Пустой эпик должен быть в статусе NEW
-// для чего пересматривать статус удаляемого эпика?
+

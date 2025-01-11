@@ -33,9 +33,9 @@ public class Main {
         taskManager.updateTask(task3);             // обновление задач
 //        taskManager.updateSubTask(subtask1,subtask4);    // обновление подзадач
         taskManager.updateSubTask(subtask4);
-  //      System.out.println(taskManager.getAllSubTask());
-  //      taskManager.getAllTasks1();
-  //    System.out.println(taskManager.getSubtaskByEpic(3));
+//        System.out.println(taskManager.getAllSubTask());
+//        taskManager.getAllTasks1();
+//        System.out.println(taskManager.getSubtaskByEpic(3));
 
 //        taskManager.deleteById(1);   // удаление задачи по Id
 //        taskManager.deleteById(5);   // удаление под задачи по Id
