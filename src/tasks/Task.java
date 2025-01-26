@@ -69,6 +69,6 @@ public class Task {
 
     @Override
     public String toString() {
-        return "ID " + this.getClass().getName() + "{name='" + name + '\'' + ", description='" + description + '\'' + ", progress=" + status + '}';
+        return "ID " + this.getId() + " " + this.getClass().getName() + "{name='" + name + '\'' + ", description='" + description + '\'' + ", progress=" + status + '}';
     }
 }

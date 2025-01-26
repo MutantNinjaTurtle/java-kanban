@@ -10,6 +10,10 @@ public class Epic extends Task {
         this.subtasks = new ArrayList<>();
     }
 
+    public Epic(String name, String description, int id) {
+        super(name, description, Status.NEW, id);
+    }
+
     public void deleteAllSubtasks() {
         subtasks.clear();
     }
