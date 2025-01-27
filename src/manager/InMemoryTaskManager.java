@@ -106,7 +106,7 @@ public class InMemoryTaskManager implements TaskManager {
     public void updateSubTask(Subtask subtask) { //обновление подзадачи
         subtasks.put(subtask.getId(), subtask);
         Epic epic = epics.get(subtask.getEpicId());
-        epic.addSubtask(subtask);
+        epic.updateSubtask(subtask);
         epic.updateStatus();
     }
 
@@ -127,8 +127,12 @@ public class InMemoryTaskManager implements TaskManager {
     }
 
     @Override
-    public void deleteByIdSubtasks(int id) {    // Удаление подзадачи по идентификатору (Id)
+    public void deleteByIdSubtasks(int id) {
+        // Удаление подзадачи по идентификатору (Id)
         Subtask subtask = subtasks.get(id);
+        if (subtask == null) {
+            return;
+        }
         Epic epic = epics.get(subtask.getEpicId());
         epic.removeById(subtask);
         subtasks.remove(id);

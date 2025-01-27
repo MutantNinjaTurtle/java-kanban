@@ -53,4 +53,8 @@ public class Epic extends Task {
         subtasks.add(subtask);
         updateStatus();
     }
+    public void updateSubtask(Subtask subtask){
+        subtasks.set(subtask.getId(),subtask);
+        updateStatus();
+    }
 }
