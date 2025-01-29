@@ -30,14 +30,15 @@ public class Main {
         taskManager.addSubtask(subtask2);
         taskManager.addSubtask(subtask3);
 //        Subtask subtask4 = new Subtask("Ремонт комнаты 1", "Покраска  потолка", Status.DONE, epic1.getId(), 5);
-        printAll(taskManager);
+       // printAll(taskManager);
 //        System.out.println(taskManager.getAllSubTask());
 //        taskManager.getAllTasks1();
 //        System.out.println(taskManager.getSubtaskByEpic(3));
 //        taskManager.deleteById(1);   // удаление задачи по Id
 //        taskManager.deleteById(5);   // удаление под задачи по Id
 //        taskManager.getAllTasks1();
-//        taskManager.deleteById(3);  // удаление эпика по id
+//        taskManager.deleteByIdEpic(3);  // удаление эпика по id
+        printAll(taskManager);
 //        taskManager.getAllTasks1();
     }
 

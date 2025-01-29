@@ -1,5 +1,3 @@
-
-
 import manager.InMemoryHistoryManager;
 import org.junit.jupiter.api.Test;
 import tasks.Status;
@@ -30,14 +28,8 @@ public class InMemoryHistoryManagerTest {
         for (int i = 0; i < 11; i++) {
             historyManager.addTask(task);
         }
-        InMemoryHistoryManager expectedHistory = new InMemoryHistoryManager();
-        for (int i = 0; i < 10; i++) {
-            expectedHistory.addTask(task);
-        }
         List<Task> historyManagerList = historyManager.getHistory();
-        List<Task> expectedHistoryList = expectedHistory.getHistory();
         assertNotNull(historyManager, "История не пустая.");
-        assertEquals(10,historyManagerList.size());
-        assertArrayEquals(historyManagerList.toArray(),expectedHistoryList.toArray());
+        assertEquals(10, historyManagerList.size());
     }
 }

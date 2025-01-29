@@ -8,7 +8,7 @@ import java.util.Objects;
 
 public class InMemoryHistoryManager implements HistoryManager {
 
-    private static final int historySize = 10;
+    private static final int HISTORY_SIZE = 10;
     private final List<Task> historyStorage = new ArrayList<>();
 
     @Override
@@ -17,14 +17,14 @@ public class InMemoryHistoryManager implements HistoryManager {
             return;
         }
         historyStorage.add(new Task(task.getName(), task.getDescription(), task.getStatus(), task.getId()));
-        if (historyStorage.size() > historySize) {
+        if (historyStorage.size() > HISTORY_SIZE) {
             historyStorage.remove(0);
         }
     }
 
     @Override
     public List<Task> getHistory() {
-        List <Task> hisrotyTask = new ArrayList<>();
-        return hisrotyTask = historyStorage;
+        return new ArrayList<>(historyStorage);
     }
 }
+
